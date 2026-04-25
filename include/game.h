@@ -1,6 +1,9 @@
 #ifndef GAME_H
 # define GAME_H
 
-bool game_loop(void);
+enum e_const
+{
+	WIN_VALUE = 2048
+};
 
 #endif

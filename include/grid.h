@@ -33,4 +33,7 @@ int		count_empty_cells(t_grid *game);
 void	reinitiate_attributes(t_grid *game);
 int		gameover(t_grid copy_game);
 
+void	print_grid(t_grid *game);
+void	init_game(t_grid *game);
+
 #endif

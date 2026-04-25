@@ -1,10 +1,10 @@
-<<<<<<< HEAD
 #include <stdbool.h>
 
 bool game_loop(void)
 {
 	return false;
-=======
+}
+
 #include "str_utils.h"
 #include "grid.h"
 #include <signal.h>
@@ -22,7 +22,7 @@ void	init_game(t_grid *game)
 		j = 0;
 		while (j < game->max_size)
 		{
-			game->grid[i][j].number = 2; ///////////// change to 0 after
+			game->grid[i][j].number = 0; ///////////// change to 0 after
 			game->grid[i][j].merged = 0;
 			j++;
 		}
@@ -59,25 +59,24 @@ void	print_grid(t_grid *game)
 	printf("=========================================\n");
 }
 
-int	main(void)
-{
-	t_grid	game;
-	srand(time(NULL));
-	int		i = 0; ////////////////////////erase later
+// int	main(void)
+// {
+// 	t_grid	game;
+// 	srand(time(NULL));
+// 	int		i = 0; ////////////////////////erase later
 
-	game.max_size = 4; // it can be 4 or 5, get this value from menu
-	init_game(&game);
-	while (i < 5) ///////////// change to !gameover(game)
-	{
-		reinitiate_attributes(&game);
-		while (!go_right(&game) && i < 5) /////////// change to users decision
-		{
-			printf("Cant move\n"); ////////// erase this later
-			i++; ///////////////////// erase this later
-			continue ;
-		}
-		get_next_number(&game);
-		print_grid(&game);
-	}
->>>>>>> b223fbd (game logic)
-}
+// 	game.max_size = 4; // it can be 4 or 5, get this value from menu
+// 	init_game(&game);
+// 	while (i < 5) ///////////// change to !gameover(game)
+// 	{
+// 		reinitiate_attributes(&game);
+// 		while (!go_right(&game) && i < 5) /////////// change to users decision
+// 		{
+// 			printf("Cant move\n"); ////////// erase this later
+// 			i++; ///////////////////// erase this later
+// 			continue ;
+// 		}
+// 		get_next_number(&game);
+// 		print_grid(&game);
+// 	}
+// }

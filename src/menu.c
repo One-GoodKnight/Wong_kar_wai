@@ -11,7 +11,7 @@ static void display_menu(WINDOW *window, int choice)
 	int mid_y = size_y / 2;
 	int mid_x = size_x / 2;
 
-	//erase();
+	erase();
 	mvprintw(mid_y - 3, mid_x - ft_strlen(header) / 2, "%s", header);
 	for (int i = 0; i < 2; i++)
 	{
