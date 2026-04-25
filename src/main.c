@@ -110,6 +110,7 @@ int	main(void)
 	endwin();
 
 	printf("hi");
+	
 	print_grid(&game);
 	return (0);
 }

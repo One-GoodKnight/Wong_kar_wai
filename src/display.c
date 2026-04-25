@@ -6,15 +6,25 @@ static void display_node(int x, int y, int node_size)
 {
 	attron(COLOR_PAIR(1));
 
-	for (int i = 0; i < node_size * 2; i++)
-		mvprintw((y * node_size), (x * node_size * 2) + i, "%c", ' ');
-	for (int i = 0; i < node_size * 2; i++)
-		mvprintw((y * node_size) + node_size - 1, (x * node_size * 2) + i, "%c", ' ');
+	int x_start = x * node_size * 2;
+	int y_start = y * node_size;
+	int char_x = node_size * 2;
+	int char_y = node_size;
+	for (int i = 0; i < char_x; i++)
+		mvprintw(y_start, x_start + i, "%c", ' ');
 
-	for (int j = 0; j < node_size; j++)
-		mvprintw((y * node_size) + j, (x * node_size * 2), "%c", ' ');
-	for (int j = 0; j < node_size; j++)
-		mvprintw((y * node_size) + j, (x * node_size * 2) + (node_size * 2 - 1), "%c", ' ');
+	for (int i = 0; i < char_x; i++)
+		mvprintw(y_start + node_size, x_start + i, "%c", ' ');
+
+	for (int j = 0; j < char_y + 1; j++)
+	{
+		mvprintw(y_start + j, x_start, "%c", ' ');
+	}
+
+	for (int j = 0; j < char_y + 1; j++)
+	{
+		mvprintw(y_start + j, x_start + char_x - 1, "%c", ' ');
+	}
 
 	attroff(COLOR_PAIR(1));
 }
@@ -35,10 +45,12 @@ int calculate_node_size(int win_size_x, int win_size_y, int grid_size)
 {
 	int node_size;
 
-	if (win_size_x < win_size_y)
-		node_size = win_size_x / grid_size;
+	if ((win_size_x / 2) < win_size_y)
+		node_size = (win_size_x / 2) / grid_size;
 	else
 		node_size = win_size_y / grid_size;
+	if (node_size > 1)
+		node_size -= 1;
 	return node_size;
 }
 
