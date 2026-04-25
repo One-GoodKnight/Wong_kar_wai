@@ -29,7 +29,7 @@ int	main(void)
 	// bool	end;
 	int		state;
 	t_grid	game;
-	//srand(time(NULL));
+	srand(time(NULL));
 
 	init_signals();
 
@@ -67,45 +67,42 @@ int	main(void)
 
 		if (state == GAME)
 		{
+			display_game(window);
+			if (gameover(game))
+				break ;
 			int key = getch();
 			bool pressed_arrow = true;
 			if (key == 27)
 				break;
+			reinitiate_attributes(&game);
 			switch (key)
 			{
 				case KEY_UP:
 					go_up(&game);
-					break;
+					break ;
 				case KEY_DOWN:
 					go_down(&game);
-					break;
+					break ;
 				case KEY_RIGHT:
 					go_right(&game);
-					break;
+					break ;
 				case KEY_LEFT:
 					go_left(&game);
-					break;
-				default:
+					break ;
+				default :
 					pressed_arrow = false;
-					break;
+					break ;
 			}
-			if (!pressed_arrow)
-				continue;
-			if (gameover(game))
-				break;
-			reinitiate_attributes(&game);
+			if (!pressed_arrow || !game.movements_counter)
+				continue ;
 			get_next_number(&game);
-			display_game(window);
 		}
 	}
-	
 
 	echo();
 	nocbreak();
 	curs_set(1);
 	endwin();
 	print_grid(&game);
-
-	printf("hi");
 	return (0);
 }

@@ -5,7 +5,8 @@ typedef enum e_const
 {
 	MENU,
 	INIT_GAME,
-	GAME
+	GAME,
+	WIN_VALUE = 2048
 } t_enum;
 
 #endif
