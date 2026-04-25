@@ -63,11 +63,11 @@ int	main(void)
 			game.max_size = size;
 			init_game(&game);
 			state = GAME;
-			display_game(window);
 		}
 
 		if (state == GAME)
 		{
+			
 			display_game(window);
 			if (gameover(game))
 				break ;

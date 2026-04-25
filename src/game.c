@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include "str_utils.h"
 #include "grid.h"
+#include "state.h"
 #include <signal.h>
 
 void	init_game(t_grid *game)
@@ -11,6 +12,7 @@ void	init_game(t_grid *game)
 
 	i = 0;
 	j = 0;
+	
 	while (i < game->max_size)
 	{
 		j = 0;
