@@ -2,11 +2,13 @@
 #include "grid.h"
 #include <signal.h>
 
-static void	merge(t_node *current, t_node *neighbor)
+static void	merge(t_node *current, t_node *neighbor, t_grid *game)
 {
 	neighbor->number *= 2;
 	current->number = 0;
 	neighbor->merged = 1;
+	if (neighbor->number > game->max_number)
+		game->max_number = neighbor->number;
 }
 
 int	go_right(t_grid *game)
@@ -33,7 +35,7 @@ int	go_right(t_grid *game)
 			else if (game->grid[i][j + 1].number == game->grid[i][j].number
 				&& game->grid[i][j + 1].merged == 0)
 			{
-				merge(&game->grid[i][j], &game->grid[i][j + 1]);
+				merge(&game->grid[i][j], &game->grid[i][j + 1], game);
 				game->movements_counter++;
 				j++;
 			}
@@ -69,7 +71,7 @@ int	go_left(t_grid *game)
 			else if (game->grid[i][j - 1].number == game->grid[i][j].number
 				&& game->grid[i][j - 1].merged == 0)
 			{
-				merge(&game->grid[i][j], &game->grid[i][j - 1]);
+				merge(&game->grid[i][j], &game->grid[i][j - 1], game);
 				game->movements_counter++;
 				j--;
 			}
@@ -105,7 +107,7 @@ int	go_up(t_grid *game)
 			else if (game->grid[j - 1][i].number == game->grid[j][i].number
 				&& game->grid[j - 1][i].merged == 0)
 			{
-				merge(&game->grid[j][i], &game->grid[j - 1][i]);
+				merge(&game->grid[j][i], &game->grid[j - 1][i], game);
 				game->movements_counter++;
 				j--;
 			}
@@ -141,7 +143,7 @@ int	go_down(t_grid *game)
 			else if (game->grid[j + 1][i].number == game->grid[j][i].number
 				&& game->grid[j + 1][i].merged == 0)
 			{
-				merge(&game->grid[j][i], &game->grid[j + 1][i]);
+				merge(&game->grid[j][i], &game->grid[j + 1][i], game);
 				game->movements_counter++;
 				j++;
 			}

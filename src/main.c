@@ -30,6 +30,7 @@ int	main(void)
 	int		state;
 	t_grid	game;
 	srand(time(NULL));
+	int win_value = get_victory_number();
 
 	init_signals();
 
@@ -69,6 +70,8 @@ int	main(void)
 
 		if (state == GAME)
 		{
+			if (win_value > 0 && game.max_number >= win_value)
+				break ;
 			display_game(window, &game);
 			if (gameover(game))
 				break ;

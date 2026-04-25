@@ -14,7 +14,7 @@ typedef struct s_grid
 	int		empty_cells;
 	int		chosen_x;
 	int		chosen_y;
-	int		victory;
+	int		max_number;
 	t_node	grid[5][5];
 }	t_grid;
 
@@ -33,6 +33,7 @@ int		choose_number(void);
 int		count_empty_cells(t_grid *game);
 void	reinitiate_attributes(t_grid *game);
 int		gameover(t_grid copy_game);
+int		get_victory_number(void);
 
 void	print_grid(t_grid *game);
 void	init_game(t_grid *game);

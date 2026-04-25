@@ -10,9 +10,8 @@ void	init_game(t_grid *game)
 	int	i;
 	int	j;
 
+	game->max_number = 0;
 	i = 0;
-	j = 0;
-	
 	while (i < game->max_size)
 	{
 		j = 0;
@@ -32,6 +31,18 @@ void	init_game(t_grid *game)
 		count++;
 	}
 	game->movements_counter = 0;
+	i = 0;
+	while (i < game->max_size)
+	{
+		j = 0;
+		while (j < game->max_size)
+		{
+			if (game->grid[i][j].number > game->max_number)
+				game->max_number = game->grid[i][j].number;
+			j++;
+		}
+		i++;
+	}
 }
 
 void	print_grid(t_grid *game)

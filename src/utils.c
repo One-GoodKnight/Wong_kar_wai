@@ -1,6 +1,6 @@
 #include "str_utils.h"
 #include "grid.h"
-#include "state.h"
+#include "game.h"
 #include <signal.h>
 
 void	reinitiate_attributes(t_grid *game)
@@ -53,6 +53,14 @@ int	count_empty_cells(t_grid *game)
 
 int	get_victory_number(void)
 {
-	a = WIN_VALUE
-	while 
+	int	a = WIN_VALUE;
+	int	b = 2;
+
+	while (b <= a)
+	{
+		if (b == a)
+			return (a);
+		b *= 2;
+	}
+	return (-1);
 }
