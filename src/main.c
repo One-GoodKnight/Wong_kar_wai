@@ -34,6 +34,8 @@ int	main(void)
 	init_signals();
 
 	window = initscr();
+	start_color();
+	init_pair(1, COLOR_BLUE, COLOR_BLUE); //borders
 	noecho();
 	cbreak();
 	curs_set(0);
@@ -67,8 +69,7 @@ int	main(void)
 
 		if (state == GAME)
 		{
-			
-			display_game(window);
+			display_game(window, &game);
 			if (gameover(game))
 				break ;
 			int key = getch();
@@ -104,6 +105,8 @@ int	main(void)
 	nocbreak();
 	curs_set(1);
 	endwin();
+
+	printf("hi");
 	print_grid(&game);
 	return (0);
 }
