@@ -2,7 +2,7 @@
 #include "grid.h"
 #include "str_utils.h"
 
-static void display_node(int x, int y, int node_size)
+static void display_node_border(int x, int y, int node_size)
 {
 	attron(COLOR_PAIR(1));
 
@@ -29,13 +29,25 @@ static void display_node(int x, int y, int node_size)
 	attroff(COLOR_PAIR(1));
 }
 
+static void display_board_number(int x, int y, int node_size, int number)
+{
+	int x_start = x * node_size * 2;
+	int y_start = y * node_size;
+	int char_x = node_size * 2;
+	int char_y = node_size;
+	
+	mvprintw(y_start + char_y / 2, x_start + char_x / 2, "%d", number);
+}
+
 static void display_board(t_grid *grid, int node_size)
 {
 	for (int i = 0; i < grid->max_size; i++)
 	{
 		for (int j = 0; j < grid->max_size; j++)
 		{
-			display_node(i, j, node_size);
+			display_node_border(i, j, node_size);
+			if (grid->grid[j][i].number != 0)
+				display_board_number(i, j, node_size, grid->grid[j][i].number);
 		}
 	}
 	return;

@@ -29,6 +29,7 @@ int	main(void)
 	// bool	end;
 	int		state;
 	t_grid	game;
+
 	srand(time(NULL));
 	int win_value = get_victory_number();
 
@@ -72,9 +73,9 @@ int	main(void)
 		{
 			if (win_value > 0 && game.max_number >= win_value)
 				break ;
-			display_game(window, &game);
 			if (gameover(game))
-				break ;
+				break;
+			display_game(window, &game);
 			int key = getch();
 			bool pressed_arrow = true;
 			if (key == 27)
