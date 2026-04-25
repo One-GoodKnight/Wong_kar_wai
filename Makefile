@@ -5,6 +5,10 @@ INCLUDE_DIR		:= include
 
 SRCS			:= 								\
 	main.c										\
+	game.c										\
+	display.c									\
+	menu.c										\
+	str_utils.c									\
 
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
@@ -13,11 +17,12 @@ DEPS			:= $(OBJS:.o=.d)
 CC				:= cc
 CFLAGS			:= -Wall -Wextra -Werror
 CPPFLAGS		:= -I $(INCLUDE_DIR) -MMD -MP
+LDFLAGS 		= -lncurses
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $^ -o $@
+	$(CC) $^ -o $@ $(LDFLAGS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(dir $@)
