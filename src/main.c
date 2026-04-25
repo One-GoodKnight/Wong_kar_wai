@@ -64,13 +64,12 @@ int	main(void)
 				size = 5;
 			game.max_size = size;
 			init_game(&game);
-			display_game(window, &game);
 			state = GAME;
 		}
 
 		if (state == GAME)
 		{
-			display_game(window);
+			display_game(window, &game);
 			if (gameover(game))
 				break ;
 			int key = getch();
@@ -99,7 +98,6 @@ int	main(void)
 			if (!pressed_arrow || !game.movements_counter)
 				continue ;
 			get_next_number(&game);
-			display_game(window, &game);
 		}
 	}
 
