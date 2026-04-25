@@ -29,11 +29,14 @@ int	main(void)
 	// bool	end;
 	int		state;
 	t_grid	game;
-	//srand(time(NULL));
+
+	srand(time(NULL));
 
 	init_signals();
 
 	window = initscr();
+	start_color();
+	init_pair(1, COLOR_BLUE, COLOR_BLUE); //borders
 	noecho();
 	cbreak();
 	curs_set(0);
@@ -62,8 +65,8 @@ int	main(void)
 				size = 5;
 			game.max_size = size;
 			init_game(&game);
+			display_game(window, &game);
 			state = GAME;
-			display_game(window);
 		}
 
 		if (state == GAME)
@@ -96,7 +99,7 @@ int	main(void)
 				break;
 			reinitiate_attributes(&game);
 			get_next_number(&game);
-			display_game(window);
+			display_game(window, &game);
 		}
 	}
 	
@@ -105,7 +108,6 @@ int	main(void)
 	nocbreak();
 	curs_set(1);
 	endwin();
-	print_grid(&game);
 
 	printf("hi");
 	return (0);
