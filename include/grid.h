@@ -14,6 +14,7 @@ typedef struct s_grid
 	int		empty_cells;
 	int		chosen_x;
 	int		chosen_y;
+	int		victory;
 	t_node	grid[5][5];
 }	t_grid;
 
