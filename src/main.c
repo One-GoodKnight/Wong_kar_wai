@@ -71,8 +71,10 @@ int	main(void)
 
 		if (state == GAME)
 		{
-			if (win_value > 0 && game.max_number >= win_value)
+			if (game.max_number == 2048)
 				break ;
+			// if (win_value > 0 && game.max_number >= win_value)
+			// 	do something else ;
 			if (gameover(game))
 				break;
 			display_game(window, &game);
@@ -109,9 +111,6 @@ int	main(void)
 	nocbreak();
 	curs_set(1);
 	endwin();
-
-	printf("hi");
-	
 	print_grid(&game);
 	return (0);
 }
