@@ -20,7 +20,7 @@ DEPS			:= $(OBJS:.o=.d)
 CC				:= cc
 CFLAGS			:= -Wall -Wextra -Werror
 CPPFLAGS		:= -I $(INCLUDE_DIR) -MMD -MP
-LDFLAGS 		= -lncurses
+LDFLAGS 		:= -lncurses
 
 all: $(NAME)
 

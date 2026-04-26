@@ -26,18 +26,91 @@ int	main(void)
 	WINDOW	*window;
 	int		key;
 	int		menu_choice;
-	// bool	end;
 	int		state;
-	t_grid	game;
+	t_grid	game = {0};
+
+	const char *digits[10][5] = {
+		{
+			"#####",
+			"## ##",
+			"## ##",
+			"## ##",
+			"#####",
+		},
+		{
+			"### ",
+			" ## ",
+			" ## ",
+			" ## ",
+			"####",
+		},
+		{
+			"#####",
+			"   ##",
+			"#####",
+			"##   ",
+			"#####",
+		},
+		{
+			"#####",
+			"   ##",
+			"#####",
+			"   ##",
+			"#####",
+		},
+		{
+			"##   ",
+			"##   ",
+			"#####",
+			"   ##",
+			"   ##",
+		},
+		{
+			"#####",
+			"##   ",
+			"#####",
+			"   ##",
+			"#####",
+		},
+		{
+			"#####",
+			"##   ",
+			"#####",
+			"## ##",
+			"#####",
+		},
+		{
+			"#####",
+			"   ##",
+			"   ##",
+			"   ##",
+			"   ##",
+		},
+		{
+			"#####",
+			"## ##",
+			"#####",
+			"## ##",
+			"#####",
+		},
+		{
+			"#####",
+			"## ##",
+			"#####",
+			"    #",
+			"#####",
+		},
+	};
 
 	srand(time(NULL));
-	int win_value = get_victory_number();
+	//int win_value = get_victory_number();
 
 	init_signals();
 
 	window = initscr();
 	start_color();
 	init_pair(1, COLOR_BLUE, COLOR_BLUE); //borders
+	init_pair(2, COLOR_YELLOW, COLOR_YELLOW); //numbers
 	noecho();
 	cbreak();
 	curs_set(0);
@@ -77,7 +150,7 @@ int	main(void)
 			// 	do something else ;
 			if (gameover(game))
 				break;
-			display_game(window, &game);
+			display_grid(window, &game, digits);
 			int key = getch();
 			bool pressed_arrow = true;
 			if (key == 27)

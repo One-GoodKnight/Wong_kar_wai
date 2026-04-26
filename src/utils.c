@@ -53,6 +53,9 @@ int	count_empty_cells(t_grid *game)
 
 int	get_victory_number(void)
 {
+	if (WIN_VALUE == 1)
+		return (1);
+
 	int	a = WIN_VALUE;
 	int	b = 2;
 
