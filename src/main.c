@@ -159,11 +159,11 @@ int	main(void)
 	{
 		if (state == MENU)
 		{
+			if (key == 27)
+				break;
 			key = menu(window, &menu_choice);
 			if (key == '\n')
 				state = INIT_GAME;
-			if (key == 27)
-				break;
 			continue;
 		}
 
@@ -179,10 +179,6 @@ int	main(void)
 
 		if (state == GAME)
 		{
-			if (game.max_number == 2048)
-				break ;
-			if (gameover(game))
-				break;
 			erase();
 			display_grid(window, &game, digits);
 			if (win_value > 0 && game.max_number >= win_value && !win_message_shown)
@@ -194,12 +190,14 @@ int	main(void)
 					win_message_shown = true;
 			}
 			refresh();
+
 			int key = getch();
-			if (game.max_number == 2048 || key == 27 || gameover(game))
+			if (game.max_number == 32 || key == 27 || gameover(game))
 			{
 				save_file(game);
 				break ;
 			}
+
 			reinitiate_attributes(&game);
 			bool pressed_arrow = true;
 			switch (key)
