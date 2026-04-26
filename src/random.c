@@ -46,8 +46,8 @@ int	choose_number(void)
 	int	rand_num;
 	int	new_number;
 
-	rand_num = rand() % 5;
-	if (rand_num < 3)
+	rand_num = rand() % 10 + 1;
+	if (rand_num <= 7)
 		new_number = 2;
 	else
 		new_number = 4;
