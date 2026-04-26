@@ -30,7 +30,7 @@ static void display_node_border(int x, int y, int node_size, int grid_offset_x, 
 	attroff(COLOR_PAIR(1));
 }
 
-static int total_number_length(int number, const char *digits[10][5])
+int total_number_length(int number, const char *digits[10][5])
 {
 	int digit;
 	int digit_x_len;
@@ -60,18 +60,20 @@ static void display_ascii_digit(int x, int y, const char **digit_ascii, int digi
 	}
 }
 
-static bool display_ascii_number(int x, int y, int node_size, int number, const char *digits[10][5])
+bool display_ascii_number(int x, int y, int node_size, int number, const char *digits[10][5], bool score)
 {
-	int digits_in_number[4] = {-1, -1, -1, -1};
+	int digits_in_number[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 	int digit;
 	int digit_x_len;
 	int cur_digit_x_offset = 0;
 	int number_x_offset = total_number_length(number, digits) / 2;
 
-	if (total_number_length(number, digits) + 3 > node_size * 2 || (5 + 3) > node_size)
+	if (!score && (total_number_length(number, digits) + 3 > node_size * 2 || (5 + 3) > node_size))
 		return false;
+	if (number == 0 && score)
+		digits_in_number[0] = 0;
 	attron(COLOR_PAIR(2));
-	int i = 3;
+	int i = 9;
 	while (number != 0 && i >= 0)
 	{
 		digit = number % 10;
@@ -79,7 +81,7 @@ static bool display_ascii_number(int x, int y, int node_size, int number, const 
 		number /= 10;
 		i--;
 	}
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < 10; i++)
 	{
 		digit = digits_in_number[i];
 		if (digit == -1)
@@ -111,7 +113,7 @@ static void display_number(int x, int y, int node_size, int number, const char *
 	int char_x = node_size * 2;
 	int char_y = node_size;
 	
-	bool displayed = display_ascii_number(x_start + char_x / 2, y_start + char_y / 2, node_size, number, digits);
+	bool displayed = display_ascii_number(x_start + char_x / 2, y_start + char_y / 2, node_size, number, digits, false);
 	if (!displayed)
 	{
 		int number_of_digits = get_number_of_digits(number);

@@ -7,6 +7,7 @@ SRCS			:= 								\
 	main.c										\
 	game.c										\
 	display.c									\
+	display_score.c								\
 	display_win.c								\
 	menu.c										\
 	str_utils.c									\

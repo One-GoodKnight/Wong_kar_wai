@@ -180,6 +180,7 @@ int	main(void)
 		if (state == GAME)
 		{
 			erase();
+			display_score(game.total_score, digits);
 			display_grid(window, &game, digits);
 			if (win_value > 0 && game.max_number >= win_value && !win_message_shown)
 			{
