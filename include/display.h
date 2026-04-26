@@ -5,5 +5,6 @@
 #include "grid.h"
 
 void	display_grid(WINDOW	*screen, t_grid *grid, const char *digits[10][5]);
+void	display_win(WINDOW	*screen, const char *dragon[27]);
 
 #endif

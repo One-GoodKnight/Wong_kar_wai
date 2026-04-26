@@ -102,8 +102,38 @@ int	main(void)
 		},
 	};
 
+	const char *dragon[27] = {
+		"   				\\\\     \\\\                    "
+		"   			   ) \\ \\  ) \\ \\                  "
+		"   			  \\   \\  \\____ \\                 "
+		"   			  ) \\ /  __    __\\               "
+		"   			 \\   /  (_@\\   \\_@)              "
+		"   			   \\(             \\              "
+		"   		   /^\\   \\     <<     _\\_            "
+		"   		 / //\\ \\   \\___  \\\\       \\          "
+		"   	   // //  \\__\\/     \\  \\\\   ^ ^)         "
+		"   	 //  // /            (___\\/\\  /          "
+		"      //   // |         |          /   /-\\      "
+		"    //   //__/       |           \\ | /     \\    "
+		"  // __ /  /        /|  |         \\ \\ />   |    "
+		" /    /  (        /  |             \\ \\/   /     "
+		"/          \\     <   |  |           \\    /      "
+		"			  \\     \\ |               \\  /       "
+		"			   |      \\  |             \\/        "
+		"			  /       |                 \\        "
+		"	  /-------\\   <---(  |               )       "
+		"	/          \\__\\_\\(   (       *    )   )      "
+		" /      /-----/   / \\(__  (_________)   )       "
+		"|      |         /    |                )        "
+		"|      |       /       \\               /        "
+		"|      \\____/           \\     |^|     |         "
+		"|                     ___\\    / \\     /__       "
+		"|              /-\\__/          \\/        \\__/-\\ "
+		" \\__________/-//\\_____/\\______/  \\_____/\\____/\\\\"
+	};
+
 	srand(time(NULL));
-	//int win_value = get_victory_number();
+	int win_value = get_victory_number();
 
 	init_signals();
 
@@ -144,9 +174,13 @@ int	main(void)
 
 		if (state == GAME)
 		{
-			// if (win_value > 0 && game.max_number >= win_value)
-			// 	do something else ;
+			if (game.max_number == 2048)
+				break ;
+			if (gameover(game))
+				break;
 			display_grid(window, &game, digits);
+			if (win_value > 0 && game.max_number >= win_value)
+				display_win(window, dragon);
 			int key = getch();
 			bool pressed_arrow = true;
 			if (game.max_number == 2048 || key == 27 || gameover(game))
