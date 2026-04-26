@@ -30,20 +30,6 @@ static void display_node_border(int x, int y, int node_size, int grid_offset_x, 
 	attroff(COLOR_PAIR(1));
 }
 
-static void display_ascii_digit(int x, int y, const char **digit_ascii, int digit_ascii_len)
-{
-	for (int i = 0; i < 5; i++)
-	{
-		for (int j = 0; j < digit_ascii_len; j++)
-		{
-			if (digit_ascii[i][j] == '#')
-			{
-				mvprintw(y + i, x + j, "%c", ' ');
-			}
-		}
-	}
-}
-
 static int total_number_length(int number, const char *digits[10][5])
 {
 	int digit;
@@ -58,6 +44,20 @@ static int total_number_length(int number, const char *digits[10][5])
 		number /= 10;
 	}
 	return (len);
+}
+
+static void display_ascii_digit(int x, int y, const char **digit_ascii, int digit_ascii_len)
+{
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < digit_ascii_len; j++)
+		{
+			if (digit_ascii[i][j] == '#')
+			{
+				mvprintw(y + i, x + j, "%c", ' ');
+			}
+		}
+	}
 }
 
 static bool display_ascii_number(int x, int y, int node_size, int number, const char *digits[10][5])
@@ -104,7 +104,7 @@ static int get_number_of_digits(int number)
 	return (n);
 }
 
-static void display_board_number(int x, int y, int node_size, int number, const char *digits[10][5], int grid_offset_x, int grid_offset_y)
+static void display_number(int x, int y, int node_size, int number, const char *digits[10][5], int grid_offset_x, int grid_offset_y)
 {
 	int x_start = x * node_size * 2 + grid_offset_x;
 	int y_start = y * node_size + grid_offset_y;
@@ -128,7 +128,7 @@ static void display_board(t_grid *grid, int node_size, const char *digits[10][5]
 		{
 			display_node_border(i, j, node_size, grid_offset_x, grid_offset_y);
 			if (grid->grid[j][i].number != 0)
-				display_board_number(i, j, node_size, grid->grid[j][i].number, digits, grid_offset_x, grid_offset_y);
+				display_number(i, j, node_size, grid->grid[j][i].number, digits, grid_offset_x, grid_offset_y);
 		}
 	}
 	return;
