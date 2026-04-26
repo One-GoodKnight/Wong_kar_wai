@@ -3,7 +3,7 @@
 
 enum e_const
 {
-	WIN_VALUE = 4
+	WIN_VALUE = 8
 };
 
 #endif

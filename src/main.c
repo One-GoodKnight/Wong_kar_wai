@@ -230,6 +230,6 @@ int	main(void)
 	nocbreak();
 	curs_set(1);
 	endwin();
-	print_grid(&game); /////////////////////// erase later
+	//print_grid(&game);
 	return (0);
 }

@@ -46,7 +46,7 @@ void	init_game(t_grid *game)
 	}
 }
 
-void	print_grid(t_grid *game)
+/*void	print_grid(t_grid *game)
 {
 	int		i;
 	int		j;
@@ -66,4 +66,4 @@ void	print_grid(t_grid *game)
 	}
 	if (i > 0)
 		printf("=========================================\n");
-}
+}*/

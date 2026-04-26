@@ -36,7 +36,7 @@ void	reinitiate_attributes(t_grid *game);
 int		gameover(t_grid copy_game);
 int		get_victory_number(void);
 
-void	print_grid(t_grid *game);
+//void	print_grid(t_grid *game);
 void	init_game(t_grid *game);
 void	save_file(t_grid game);
 
