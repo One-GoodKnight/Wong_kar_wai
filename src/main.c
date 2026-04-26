@@ -193,7 +193,7 @@ int	main(void)
 			refresh();
 
 			int key = getch();
-			if (game.max_number == 32 || key == 27 || gameover(game))
+			if (game.max_number == 2048 || key == 27 || gameover(game))
 			{
 				save_file(game);
 				break ;
