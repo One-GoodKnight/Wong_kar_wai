@@ -48,10 +48,7 @@ void	save_file(t_grid game)
 
 	fd = open("best_scores.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
-	{
-		perror("Error opening file");
 		return ;
-	}
 	ft_putnbr_fd(game.total_score, fd);
 	close(fd);
 }

@@ -157,9 +157,5 @@ void	display_grid(WINDOW	*screen, t_grid *grid, const char *digits[10][5])
 	int	grid_offset_x = size_x / 2 - node_size * 2 * grid->max_size / 2;
 	int	grid_offset_y = size_y / 2 - node_size * grid->max_size / 2;
 
-	erase();
-
 	display_board(grid, node_size, digits, grid_offset_x, grid_offset_y);
-
-	refresh();
 }
