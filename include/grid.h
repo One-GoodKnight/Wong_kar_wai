@@ -15,6 +15,7 @@ typedef struct s_grid
 	int		chosen_x;
 	int		chosen_y;
 	int		max_number;
+	int		total_score;
 	t_node	grid[5][5];
 }	t_grid;
 
@@ -37,5 +38,6 @@ int		get_victory_number(void);
 
 void	print_grid(t_grid *game);
 void	init_game(t_grid *game);
+void	save_file(t_grid game);
 
 #endif

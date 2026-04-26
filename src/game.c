@@ -11,6 +11,7 @@ void	init_game(t_grid *game)
 	int	j;
 
 	game->max_number = 0;
+	game->total_score = 0;
 	i = 0;
 	while (i < game->max_size)
 	{

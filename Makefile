@@ -12,6 +12,7 @@ SRCS			:= 								\
 	movements.c									\
 	random.c									\
 	utils.c										\
+	save_file.c										\
 
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)

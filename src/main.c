@@ -144,17 +144,16 @@ int	main(void)
 
 		if (state == GAME)
 		{
-			if (game.max_number == 2048)
-				break ;
 			// if (win_value > 0 && game.max_number >= win_value)
 			// 	do something else ;
-			if (gameover(game))
-				break;
 			display_grid(window, &game, digits);
 			int key = getch();
 			bool pressed_arrow = true;
-			if (key == 27)
-				break;
+			if (game.max_number == 2048 || key == 27 || gameover(game))
+			{
+				save_file(game);
+				break ;
+			}
 			reinitiate_attributes(&game);
 			switch (key)
 			{
@@ -184,6 +183,6 @@ int	main(void)
 	nocbreak();
 	curs_set(1);
 	endwin();
-	print_grid(&game);
+	print_grid(&game); /////////////////////// erase later
 	return (0);
 }

@@ -7,6 +7,7 @@ static void	merge(t_node *current, t_node *neighbor, t_grid *game)
 	neighbor->number *= 2;
 	current->number = 0;
 	neighbor->merged = 1;
+	game->total_score += neighbor->number;
 	if (neighbor->number > game->max_number)
 		game->max_number = neighbor->number;
 }
