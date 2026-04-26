@@ -18,6 +18,7 @@ void	choose_empty_cell(t_grid *game)
 	i = 0;
 	j = 0;
 	index = 0;
+	count_empty_cells(game);
 	rand_num = rand() % (game->empty_cells);
 	while (i < game->max_size)
 	{
